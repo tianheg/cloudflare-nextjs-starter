@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "pnpx @cloudflare/next-on-pages",
+    "pages:deploy": "pnpm run pages:build && wrangler pages deploy .vercel/output/static",
+    "pages:watch": "pnpx @cloudflare/next-on-pages --watch",
+    "pages:dev": "pnpx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat"
   },
   "dependencies": {
     "@types/node": "20.2.5",
@@ -18,5 +22,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.0.1",
+    "vercel": "^30.0.0",
+    "wrangler": "^3.0.1"
   }
 }
